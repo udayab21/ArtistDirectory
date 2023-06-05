@@ -1,0 +1,37 @@
+ 
+ <br>
+ <tr>
+       <h1> <td><%= @artist.name %></td><br></h1>
+        <td><%= @artist.date_of_birth %></td><br>
+        <td><%= @artist.location %></td><br>
+        <td><%= @artist.work %></td><br>
+        <td><%= @artist.email %></td><br>
+        <td><%= @artist.artist_category.name %></td> <br>
+
+</tr>
+
+<%= button_to "Send Email", send_email_path(@artist), method: :post %>
+
+<td><%= link_to "Watch Video", @artist.video_url %></td>
+
+
+ <%= render 'reviews/form'%>
+
+ <% if @artist.reviews.exists?%>    
+
+<% @artist.reviews.each do |review| %>
+  <div>
+    <strong>Rating:</strong> <%= review.rating %>
+    <br>
+    <strong>Comment:</strong> <%= review.comment %>
+    <br>
+    
+  </div>
+  <hr>
+<% end %>
+<% end %>
+
+  
+
+
+

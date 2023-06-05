@@ -1,0 +1,10 @@
+<h1>Add new artist category</h1>
+
+<%= form_with model: @category, url: artist_categories_path do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %><br>
+
+ 
+
+  <%= f.submit "Add category" %>
+<% end %>

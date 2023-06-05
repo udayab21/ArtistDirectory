@@ -1,0 +1,10 @@
+<h1>Edit artist category</h1>
+
+<%= form_with model: @category, url: artist_category_path(@category), method: :patch do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %><br>
+
+ 
+
+  <%= f.submit "Update category" %>
+<% end %>

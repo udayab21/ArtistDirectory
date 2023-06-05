@@ -1,0 +1,54 @@
+<h1>Add new artist</h1>
+
+
+
+
+
+
+ 
+<%= form_with model: @artist, url: artists_path do |f| %>
+
+<% if @artist.errors.any? %>
+      <div class="alert alert-danger">
+      <% @artist.errors.full_messages.each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+      </div>
+  <% end %>
+  <%= f.label :name %>
+  <%= f.text_field :name %><br>
+
+  <%= f.label :date_of_birth %>
+  <%= f.date_select :date_of_birth %><br>
+
+  <%= f.label :location %>
+  <%= f.text_field :location %><br>
+
+  <%= f.label :work %>
+  <%= f.text_field :work %><br>
+
+  <%= f.label :email %>
+  <%= f.text_field :email %><br>
+
+  <%= f.label :artist_category_id %>
+  <%= f.collection_select :artist_category_id, @categories, :id, :name %><br>
+
+  <%= f.submit "Add artist" %>
+
+
+
+  <%= form_for @artist do |f| %>
+  <!-- Other artist fields -->
+  <div class="field">
+    <%= f.label :video_url %>
+    <%= f.text_field :video_url %>
+  </div>
+
+  <div class="field">
+    <%= f.label :thumbnail_url %>
+    <%= f.text_field :thumbnail_url %>
+  </div>
+
+  <%= f.submit %>
+<% end %>
+<% end %>

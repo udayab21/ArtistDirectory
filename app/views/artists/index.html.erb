@@ -1,0 +1,47 @@
+<h1>Artists</h1>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Date of birth</th>
+      <th>Location</th>
+      <th>Work</th>
+      <th>Email</th>
+      <th>Category</th>
+      <th colspan="3">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @artists.each do |artist| %>
+      <tr>
+        <td><%= artist.name %></td>
+        <td><%= artist.date_of_birth %></td>
+        <td><%= artist.location %></td>
+        <td><%= artist.work %></td>
+        <td><%= artist.email %></td>
+        <td><%= artist.artist_category.name %></td>
+        
+        <% if @current_user.admin? %>
+        <td><%= link_to "Edit", edit_artist_path(artist) %></td>
+        <td><%= link_to "Show", artist_path(artist) %></td>
+        <td><%= button_to "Delete", artists_del_path(artist),  method: :delete, :onclick=> "return confirm('Are you sure?')"  %></td>
+        <% end %>
+
+        <% if @current_user && !(@current_user.admin) %>
+        <td><%= link_to "Show", artist_path(artist) %></td>
+        <% end %>
+      </tr>
+    
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+ <% if @current_user.admin? %>
+<%= link_to "Add new artist", new_artist_path %>
+<% end %>
+
+     
