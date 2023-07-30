@@ -1,0 +1,9 @@
+<h2>Email the Artist</h2>
+
+<%= form_with(url: artist_email_path(@artist), method: :post) do |f| %>
+  <div class="field">
+    <%= f.label :message %>
+    <%= f.text_area :message, rows: 5, class: 'form-control' %>
+  </div>
+  <%= f.submit 'Send Email', class: 'btn btn-primary' %>
+<% end %>
